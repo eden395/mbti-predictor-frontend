@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Sparkles, Brain, Users, BookOpen, Heart, Zap, Target, Award, Flame, Crown, Eye, Compass } from 'lucide-react';
 
-const API_URL = 'https://mbti-predictor-backend.onrender.com';
+const API_URL = 'https://mbti_predictor_backend.onrender.com';
 
 export default function App() {
   const [step, setStep] = useState(0);
