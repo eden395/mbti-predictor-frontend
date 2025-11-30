@@ -8,7 +8,7 @@ export default function App() {
   const [formData, setFormData] = useState({
     age: '',
     gender: '',
-    education: '',
+    education: '0',
     interest: '',
     introversion: 5,
     sensing: 5,
@@ -218,11 +218,9 @@ export default function App() {
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
             className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:border-yellow-500 focus:outline-none transition-colors"
           >
-            <option value="" className="bg-gray-800">Select education level</option>
-            <option value="High School" className="bg-gray-800">High School</option>
-            <option value="Bachelor's Degree" className="bg-gray-800">Bachelor's Degree</option>
-            <option value="Master's Degree" className="bg-gray-800">Master's Degree</option>
-            <option value="PhD" className="bg-gray-800">PhD</option>
+            <option value="">Select education level</option>
+            <option value="0" className="bg-gray-800">High School</option>
+            <option value="1" className="bg-gray-800">Bachelor's or Higher</option>
           </select>
         </div>
       );
@@ -340,7 +338,7 @@ export default function App() {
                   setFormData({
                     age: '',
                     gender: '',
-                    education: '',
+                    education: '0',
                     interest: '',
                     introversion: 5,
                     sensing: 5,
