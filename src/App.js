@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, Brain, Users, BookOpen, Heart, Zap, Target, Award } from 'lucide-react';
+import { Sparkles, Brain, Users, BookOpen, Heart, Zap, Target, Award, Flame, Crown, Eye, Compass } from 'lucide-react';
 
 const API_URL = 'https://mbti-predictor-backend.onrender.com';
 
@@ -22,98 +22,114 @@ export default function App() {
     'ENTJ': { 
       title: 'The Commander', 
       desc: 'Strategic leaders, motivated to organize change',
-      color: 'from-yellow-500 via-amber-400 to-yellow-600',
-      icon: Target
+      color: 'from-amber-500 via-yellow-400 to-amber-600',
+      icon: Crown,
+      accent: 'text-amber-400'
     },
     'INTJ': { 
       title: 'The Mastermind', 
       desc: 'Analytical problem-solvers, eager to improve systems',
-      color: 'from-yellow-400 via-yellow-500 to-amber-500',
-      icon: Brain
+      color: 'from-yellow-400 via-amber-500 to-yellow-500',
+      icon: Brain,
+      accent: 'text-yellow-400'
     },
     'ENTP': { 
       title: 'The Visionary', 
       desc: 'Inspired innovators, seeking new solutions',
-      color: 'from-amber-400 via-yellow-500 to-yellow-400',
-      icon: Sparkles
+      color: 'from-amber-400 via-yellow-500 to-amber-500',
+      icon: Eye,
+      accent: 'text-amber-400'
     },
     'INTP': { 
       title: 'The Architect', 
       desc: 'Philosophical innovators, fascinated by logical analysis',
-      color: 'from-yellow-500 via-amber-500 to-yellow-600',
-      icon: Brain
+      color: 'from-yellow-500 via-amber-400 to-yellow-600',
+      icon: Compass,
+      accent: 'text-yellow-500'
     },
     'ENFJ': { 
       title: 'The Teacher', 
       desc: 'Idealist organizers, driven to help humanity',
-      color: 'from-yellow-400 via-yellow-500 to-amber-400',
-      icon: Users
+      color: 'from-yellow-400 via-amber-400 to-yellow-500',
+      icon: Users,
+      accent: 'text-yellow-400'
     },
     'INFJ': { 
       title: 'The Counselor', 
       desc: 'Creative nurturers, driven by personal integrity',
-      color: 'from-amber-500 via-yellow-400 to-yellow-500',
-      icon: Heart
+      color: 'from-amber-500 via-yellow-400 to-amber-400',
+      icon: Heart,
+      accent: 'text-amber-500'
     },
     'ENFP': { 
       title: 'The Champion', 
       desc: 'People-centered creators, motivated by possibilities',
-      color: 'from-yellow-500 via-amber-400 to-yellow-500',
-      icon: Sparkles
+      color: 'from-yellow-500 via-amber-400 to-yellow-400',
+      icon: Flame,
+      accent: 'text-yellow-500'
     },
     'INFP': { 
       title: 'The Healer', 
       desc: 'Imaginative idealists, guided by values and beliefs',
       color: 'from-yellow-400 via-yellow-500 to-amber-600',
-      icon: Heart
+      icon: Heart,
+      accent: 'text-yellow-400'
     },
     'ESTJ': { 
       title: 'The Supervisor', 
       desc: 'Hardworking traditionalists, taking charge',
-      color: 'from-amber-400 via-yellow-500 to-yellow-400',
-      icon: Target
+      color: 'from-amber-400 via-yellow-500 to-amber-500',
+      icon: Target,
+      accent: 'text-amber-400'
     },
     'ISTJ': { 
       title: 'The Inspector', 
       desc: 'Responsible organizers, creating order from chaos',
       color: 'from-yellow-500 via-amber-500 to-yellow-400',
-      icon: BookOpen
+      icon: BookOpen,
+      accent: 'text-yellow-500'
     },
     'ESFJ': { 
       title: 'The Provider', 
       desc: 'Conscientious helpers, dedicated to duties',
-      color: 'from-yellow-400 via-yellow-600 to-amber-500',
-      icon: Users
+      color: 'from-yellow-400 via-amber-500 to-amber-400',
+      icon: Users,
+      accent: 'text-yellow-400'
     },
     'ISFJ': { 
       title: 'The Protector', 
       desc: 'Industrious caretakers, loyal to traditions',
-      color: 'from-amber-500 via-yellow-500 to-yellow-600',
-      icon: Heart
+      color: 'from-amber-500 via-yellow-500 to-amber-600',
+      icon: Heart,
+      accent: 'text-amber-500'
     },
     'ESTP': { 
       title: 'The Dynamo', 
       desc: 'Energetic thrillseekers, ready for action',
-      color: 'from-yellow-500 via-amber-400 to-yellow-400',
-      icon: Zap
+      color: 'from-yellow-500 via-amber-400 to-yellow-500',
+      icon: Zap,
+      accent: 'text-yellow-500'
     },
     'ISTP': { 
       title: 'The Craftsperson', 
       desc: 'Observant troubleshooters, solving practical problems',
-      color: 'from-yellow-400 via-yellow-500 to-amber-500',
-      icon: Target
+      color: 'from-yellow-400 via-amber-500 to-yellow-600',
+      icon: Target,
+      accent: 'text-yellow-400'
     },
     'ESFP': { 
       title: 'The Entertainer', 
       desc: 'Vivacious entertainers, loving life and charming others',
-      color: 'from-amber-400 via-yellow-500 to-yellow-600',
-      icon: Sparkles
+      color: 'from-amber-400 via-yellow-500 to-amber-600',
+      icon: Sparkles,
+      accent: 'text-amber-400'
     },
     'ISFP': { 
       title: 'The Composer', 
       desc: 'Gentle caretakers, enjoying the moment',
       color: 'from-yellow-500 via-yellow-400 to-amber-500',
-      icon: Heart
+      icon: Heart,
+      accent: 'text-yellow-500'
     }
   };
 
@@ -161,12 +177,12 @@ export default function App() {
     if (field === 'age') {
       return (
         <div key={field} className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Age</label>
+          <label className="block text-sm font-semibold text-gray-300 tracking-wide">AGE</label>
           <input
             type="number"
             value={formData[field]}
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-all duration-300 focus:scale-105"
+            className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white placeholder-gray-500 focus:border-yellow-500 focus:outline-none transition-all duration-300"
             placeholder="Enter your age"
             min="10"
             max="100"
@@ -178,16 +194,16 @@ export default function App() {
     if (field === 'gender') {
       return (
         <div key={field} className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Gender</label>
+          <label className="block text-sm font-semibold text-gray-300 tracking-wide">GENDER</label>
           <select
             value={formData[field]}
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-all duration-300 focus:scale-105"
+            className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:border-yellow-500 focus:outline-none transition-all duration-300"
           >
-            <option value="">Select gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Other">Other</option>
+            <option value="" className="bg-gray-800">Select gender</option>
+            <option value="Male" className="bg-gray-800">Male</option>
+            <option value="Female" className="bg-gray-800">Female</option>
+            <option value="Other" className="bg-gray-800">Other</option>
           </select>
         </div>
       );
@@ -196,17 +212,17 @@ export default function App() {
     if (field === 'education') {
       return (
         <div key={field} className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Education</label>
+          <label className="block text-sm font-semibold text-gray-300 tracking-wide">EDUCATION</label>
           <select
             value={formData[field]}
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-colors"
+            className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:border-yellow-500 focus:outline-none transition-colors"
           >
-            <option value="">Select education level</option>
-            <option value="High School">High School</option>
-            <option value="Bachelor's">Bachelor's</option>
-            <option value="Master's">Master's</option>
-            <option value="PhD">PhD</option>
+            <option value="" className="bg-gray-800">Select education level</option>
+            <option value="High School" className="bg-gray-800">High School</option>
+            <option value="Bachelor's Degree" className="bg-gray-800">Bachelor's Degree</option>
+            <option value="Master's Degree" className="bg-gray-800">Master's Degree</option>
+            <option value="PhD" className="bg-gray-800">PhD</option>
           </select>
         </div>
       );
@@ -215,18 +231,18 @@ export default function App() {
     if (field === 'interest') {
       return (
         <div key={field} className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Primary Interest</label>
+          <label className="block text-sm font-semibold text-gray-300 tracking-wide">PRIMARY INTEREST</label>
           <select
             value={formData[field]}
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
-            className="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition-colors"
+            className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:border-yellow-500 focus:outline-none transition-colors"
           >
-            <option value="">Select interest</option>
-            <option value="Technology">Technology</option>
-            <option value="Arts">Arts</option>
-            <option value="Science">Science</option>
-            <option value="Sports">Sports</option>
-            <option value="Business">Business</option>
+            <option value="" className="bg-gray-800">Select interest</option>
+            <option value="Technology" className="bg-gray-800">Technology</option>
+            <option value="Arts" className="bg-gray-800">Arts</option>
+            <option value="Science" className="bg-gray-800">Science</option>
+            <option value="Sports" className="bg-gray-800">Sports</option>
+            <option value="Business" className="bg-gray-800">Business</option>
           </select>
         </div>
       );
@@ -240,12 +256,12 @@ export default function App() {
     };
     
     return (
-      <div key={field} className="space-y-3">
+      <div key={field} className="space-y-4">
         <div className="flex justify-between items-center">
-          <label className="text-sm font-medium text-gray-700 capitalize">
-            {labels[field][0]} vs {labels[field][1]}
+          <label className="text-sm font-semibold text-gray-300 uppercase tracking-wider">
+            {labels[field][0]} <span className="text-yellow-500 mx-2">→</span> {labels[field][1]}
           </label>
-          <span className="text-sm font-bold text-purple-600">{formData[field]}/10</span>
+          <span className="text-lg font-bold text-yellow-400 bg-gray-800 px-4 py-1 rounded-lg border border-gray-700">{formData[field]}</span>
         </div>
         <input
           type="range"
@@ -254,9 +270,9 @@ export default function App() {
           step="0.1"
           value={formData[field]}
           onChange={(e) => setFormData({...formData, [field]: parseFloat(e.target.value)})}
-          className="w-full h-2 bg-gradient-to-r from-purple-200 to-purple-500 rounded-lg appearance-none cursor-pointer slider"
+          className="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer slider-dark"
         />
-        <div className="flex justify-between text-xs text-gray-500">
+        <div className="flex justify-between text-xs text-gray-500 uppercase tracking-wider font-medium">
           <span>{labels[field][0]}</span>
           <span>{labels[field][1]}</span>
         </div>
@@ -269,43 +285,46 @@ export default function App() {
     const Icon = mbtiInfo.icon;
     
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-4 flex items-center justify-center">
-        <div className="max-w-2xl w-full">
-          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden animate-fadeIn">
-            <div className={`bg-gradient-to-r ${mbtiInfo.color} p-8 text-white relative overflow-hidden`}>
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-0 left-0 w-32 h-32 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
-              </div>
+      <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 p-4 flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-900/20 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-2xl w-full relative z-10">
+          <div className="bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border-2 border-gray-800 animate-fadeIn">
+            <div className={`bg-gradient-to-r ${mbtiInfo.color} p-10 text-gray-900 relative overflow-hidden`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-transparent"></div>
               <div className="relative z-10">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="transform hover:scale-110 transition-transform duration-300">
-                    <Icon className="w-16 h-16" />
+                <div className="flex items-center justify-center mb-6">
+                  <div className="transform hover:scale-110 transition-transform duration-300 bg-black/20 p-4 rounded-2xl backdrop-blur-sm">
+                    <Icon className="w-16 h-16" strokeWidth={2.5} />
                   </div>
                 </div>
-                <h1 className="text-4xl font-bold text-center mb-2 animate-pulse">{result.type}</h1>
-                <h2 className="text-2xl text-center mb-2">{mbtiInfo.title}</h2>
-                <p className="text-center text-white/90">{mbtiInfo.desc}</p>
+                <h1 className="text-5xl font-black text-center mb-3 tracking-tight">{result.type}</h1>
+                <h2 className="text-2xl font-bold text-center mb-2 tracking-wide">{mbtiInfo.title}</h2>
+                <p className="text-center text-gray-900/80 font-medium">{mbtiInfo.desc}</p>
               </div>
             </div>
             
-            <div className="p-8">
-              <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                <Award className="w-5 h-5 text-purple-500" />
-                Top Personality Matches
+            <div className="p-10 bg-gray-900">
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-3 text-yellow-400 uppercase tracking-wider">
+                <Award className="w-6 h-6" />
+                Personality Match Analysis
               </h3>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {result.probabilities.map(([type, prob], idx) => (
-                  <div key={type} className="flex items-center gap-3 animate-countUp" style={{animationDelay: `${idx * 0.1}s`}}>
-                    <div className="w-16 text-sm font-bold text-gray-600">#{idx + 1}</div>
+                  <div key={type} className="flex items-center gap-4 animate-countUp bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm" style={{animationDelay: `${idx * 0.1}s`}}>
+                    <div className="w-12 text-sm font-black text-yellow-400">#{idx + 1}</div>
                     <div className="flex-1">
-                      <div className="flex justify-between mb-1">
-                        <span className="font-semibold">{type}</span>
-                        <span className="text-sm text-gray-600">{(prob * 100).toFixed(1)}%</span>
+                      <div className="flex justify-between mb-2">
+                        <span className="font-bold text-white tracking-wide">{type}</span>
+                        <span className="text-sm font-bold text-yellow-400">{(prob * 100).toFixed(1)}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
+                      <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden border border-gray-600">
                         <div 
-                          className={`h-2 rounded-full bg-gradient-to-r ${mbtiDescriptions[type].color} transition-all duration-1000`}
+                          className={`h-3 rounded-full bg-gradient-to-r ${mbtiDescriptions[type].color} transition-all duration-1000 shadow-lg`}
                           style={{width: `${prob * 100}%`}}
                         />
                       </div>
@@ -329,9 +348,9 @@ export default function App() {
                     judging: 5
                   });
                 }}
-                className="w-full mt-8 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                className="w-full mt-8 bg-gradient-to-r from-yellow-500 to-amber-500 text-gray-900 py-5 rounded-xl font-bold uppercase tracking-wider hover:shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all border-2 border-yellow-400"
               >
-                Take Test Again
+                Retake Assessment
               </button>
             </div>
           </div>
@@ -341,55 +360,57 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 p-4 flex items-center justify-center overflow-hidden relative">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-64 h-64 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute top-40 right-10 w-64 h-64 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-1/3 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 p-4 flex items-center justify-center overflow-hidden relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-yellow-900/20 via-transparent to-transparent"></div>
+      
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+        <div className="absolute top-20 left-10 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse-slow animation-delay-2000"></div>
       </div>
 
       <div className="max-w-2xl w-full relative z-10">
-        <div className="text-center mb-8 animate-fadeIn">
-          <div className="flex justify-center mb-4">
+        <div className="text-center mb-10 animate-fadeIn">
+          <div className="flex justify-center mb-6">
             <div className="relative">
-              <Brain className="w-16 h-16 text-purple-600 animate-pulse" />
-              <Sparkles className="w-6 h-6 text-pink-500 absolute -top-1 -right-1 animate-twinkle" />
+              <div className="absolute inset-0 bg-yellow-500/20 rounded-full blur-xl animate-pulse"></div>
+              <Brain className="relative w-20 h-20 text-yellow-400 drop-shadow-2xl" strokeWidth={2} />
+              <Sparkles className="w-7 h-7 text-amber-400 absolute -top-2 -right-2 animate-twinkle" />
             </div>
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
-            MBTI Predictor
+          <h1 className="text-6xl font-black bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 bg-clip-text text-transparent mb-3 tracking-tight">
+            MBTI PREDICTOR
           </h1>
-          <p className="text-gray-600">Discover your personality type with AI-powered analysis</p>
+          <p className="text-gray-400 text-lg font-medium tracking-wide">Neural Analysis of Personality Patterns</p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-2xl p-8 animate-slideUp hover:shadow-3xl transition-shadow duration-300">
-          <div className="mb-8">
-            <div className="flex justify-between mb-2">
+        <div className="bg-gray-900 rounded-3xl shadow-2xl p-10 animate-slideUp border-2 border-gray-800 backdrop-blur-xl">
+          <div className="mb-10">
+            <div className="flex justify-between mb-4">
               {steps.map((s, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold transition-all duration-500 transform ${
-                    idx <= step ? 'bg-purple-500 text-white scale-110' : 'bg-gray-200 text-gray-500 scale-100'
-                  } ${idx === step ? 'ring-4 ring-purple-200' : ''}`}>
+                <div key={idx} className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-all duration-500 transform ${
+                    idx <= step ? 'bg-gradient-to-br from-yellow-400 to-amber-500 text-gray-900 scale-110 shadow-lg shadow-yellow-500/50' : 'bg-gray-800 text-gray-600 scale-100 border-2 border-gray-700'
+                  } ${idx === step ? 'ring-4 ring-yellow-500/30' : ''}`}>
                     {idx + 1}
                   </div>
-                  <span className={`text-sm font-medium transition-colors duration-300 ${idx <= step ? 'text-purple-600' : 'text-gray-400'}`}>
+                  <span className={`text-sm font-bold uppercase tracking-wider transition-colors duration-300 ${idx <= step ? 'text-yellow-400' : 'text-gray-600'}`}>
                     {s.title}
                   </span>
                 </div>
               ))}
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+            <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden border border-gray-700">
               <div 
-                className="h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-500 rounded-full transition-all duration-700 animate-shimmer"
+                className="h-3 bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 rounded-full transition-all duration-700"
                 style={{width: `${((step + 1) / steps.length) * 100}%`}}
               />
             </div>
           </div>
 
-          <div className="space-y-6 mb-8 animate-fadeIn">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+          <div className="space-y-8 mb-10 animate-fadeIn">
+            <h2 className="text-2xl font-black text-white mb-6 flex items-center gap-3 uppercase tracking-wider">
               {steps[step].title}
-              <Sparkles className="w-5 h-5 text-purple-500 animate-twinkle" />
+              <Sparkles className="w-6 h-6 text-yellow-400 animate-twinkle" />
             </h2>
             {steps[step].fields.map(field => renderField(field))}
           </div>
@@ -398,7 +419,7 @@ export default function App() {
             {step > 0 && (
               <button
                 onClick={() => setStep(step - 1)}
-                className="flex-1 bg-gray-200 text-gray-700 py-4 rounded-xl font-semibold hover:bg-gray-300 transition-colors"
+                className="flex-1 bg-gray-800 text-gray-300 py-5 rounded-xl font-bold uppercase tracking-wider hover:bg-gray-700 transition-all border-2 border-gray-700"
               >
                 Back
               </button>
@@ -406,31 +427,31 @@ export default function App() {
             {step < steps.length - 1 ? (
               <button
                 onClick={() => setStep(step + 1)}
-                className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                className="flex-1 bg-gradient-to-r from-yellow-500 to-amber-500 text-gray-900 py-5 rounded-xl font-bold uppercase tracking-wider hover:shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all border-2 border-yellow-400"
               >
-                Next
+                Continue
               </button>
             ) : (
               <button
                 onClick={predictMBTI}
                 disabled={loading}
-                className="flex-1 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-4 rounded-xl font-semibold hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 bg-gradient-to-r from-yellow-500 to-amber-500 text-gray-900 py-5 rounded-xl font-bold uppercase tracking-wider hover:shadow-2xl hover:shadow-yellow-500/50 transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed border-2 border-yellow-400"
               >
                 {loading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Analyzing...
+                  <span className="flex items-center justify-center gap-3">
+                    <div className="w-5 h-5 border-3 border-gray-900 border-t-transparent rounded-full animate-spin" />
+                    Analyzing Neural Patterns...
                   </span>
                 ) : (
-                  'Get My Result'
+                  'Generate Analysis'
                 )}
               </button>
             )}
           </div>
         </div>
 
-        <p className="text-center text-gray-500 text-sm mt-6">
-          Powered by Random Forest ML Model • Real-time predictions
+        <p className="text-center text-gray-600 text-sm mt-8 uppercase tracking-widest font-bold">
+          Random Forest ML • Real-time Analysis
         </p>
       </div>
 
@@ -440,80 +461,67 @@ export default function App() {
           to { opacity: 1; }
         }
         @keyframes slideUp {
-          from { transform: translateY(20px); opacity: 0; }
+          from { transform: translateY(30px); opacity: 0; }
           to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(50px, 50px) scale(1.05); }
         }
         @keyframes twinkle {
           0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-          50% { opacity: 0.5; transform: scale(1.2) rotate(180deg); }
-        }
-        @keyframes shimmer {
-          0% { background-position: -100% 0; }
-          100% { background-position: 200% 0; }
+          50% { opacity: 0.4; transform: scale(1.3) rotate(180deg); }
         }
         @keyframes countUp {
           from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.1); }
+        }
         .animate-fadeIn {
-          animation: fadeIn 0.6s ease-out;
+          animation: fadeIn 0.8s ease-out;
         }
         .animate-slideUp {
-          animation: slideUp 0.6s ease-out;
+          animation: slideUp 0.8s ease-out;
         }
-        .animate-blob {
-          animation: blob 7s infinite;
+        .animate-twinkle {
+          animation: twinkle 2.5s ease-in-out infinite;
+        }
+        .animate-countUp {
+          animation: countUp 0.6s ease-out;
+        }
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
         }
         .animation-delay-2000 {
           animation-delay: 2s;
         }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-        .animate-twinkle {
-          animation: twinkle 2s ease-in-out infinite;
-        }
-        .animate-shimmer {
-          background-size: 200% 100%;
-          animation: shimmer 2s linear infinite;
-        }
-        .animate-countUp {
-          animation: countUp 0.5s ease-out;
-        }
-        .slider::-webkit-slider-thumb {
+        .slider-dark::-webkit-slider-thumb {
           appearance: none;
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          background: white;
-          border: 3px solid #a855f7;
+          width: 24px;
+          height: 24px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+          border: 2px solid #fcd34d;
           cursor: pointer;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          transition: all 0.2s;
+          box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+          transition: all 0.3s;
         }
-        .slider::-webkit-slider-thumb:hover {
+        .slider-dark::-webkit-slider-thumb:hover {
           transform: scale(1.2);
-          box-shadow: 0 4px 8px rgba(168, 85, 247, 0.4);
+          box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
         }
-        .slider::-moz-range-thumb {
-          width: 20px;
-          height: 20px;
-          border-radius: 50%;
-          background: white;
-          border: 3px solid #a855f7;
+        .slider-dark::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          border-radius: 8px;
+          background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+          border: 2px solid #fcd34d;
           cursor: pointer;
-          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-          transition: all 0.2s;
+          box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+          transition: all 0.3s;
         }
-        .slider::-moz-range-thumb:hover {
+        .slider-dark::-moz-range-thumb:hover {
           transform: scale(1.2);
-          box-shadow: 0 4px 8px rgba(168, 85, 247, 0.4);
+          box-shadow: 0 0 30px rgba(251, 191, 36, 0.8);
         }
       `}</style>
     </div>
