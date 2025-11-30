@@ -17,6 +17,7 @@ export default function App() {
   });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const mbtiDescriptions = {
     'ENTJ': { 
@@ -133,8 +134,34 @@ export default function App() {
     }
   };
 
+  const validateForm = () => {
+    if (!formData.age || formData.age < 10 || formData.age > 100) {
+      setError('Please enter a valid age between 10 and 100');
+      return false;
+    }
+    if (!formData.gender) {
+      setError('Please select a gender');
+      return false;
+    }
+    if (!formData.education) {
+      setError('Please select an education level');
+      return false;
+    }
+    if (!formData.interest) {
+      setError('Please select an interest');
+      return false;
+    }
+    setError('');
+    return true;
+  };
+
   const predictMBTI = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
+    setError('');
     
     try {
       const response = await fetch(`${API_URL}/predict`, {
@@ -145,18 +172,25 @@ export default function App() {
         body: JSON.stringify(formData),
       });
       
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       if (data.success) {
+        // Use all_probabilities instead of probabilities
+        const probabilities = data.all_probabilities || data.probabilities || {};
         setResult({
           type: data.predicted_type,
-          probabilities: Object.entries(data.probabilities)
+          probabilities: Object.entries(probabilities).sort((a, b) => b[1] - a[1])
         });
       } else {
-        alert('Error: ' + data.error);
+        setError(data.error || 'Prediction failed');
       }
     } catch (error) {
-      alert('Failed to connect to server: ' + error.message);
+      console.error('Error:', error);
+      setError(`Failed to connect to server. Please check if the backend is running. Error: ${error.message}`);
     }
     
     setLoading(false);
@@ -218,7 +252,6 @@ export default function App() {
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
             className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:border-yellow-500 focus:outline-none transition-colors"
           >
-            <option value="">Select education level</option>
             <option value="0" className="bg-gray-800">High School</option>
             <option value="1" className="bg-gray-800">Bachelor's or Higher</option>
           </select>
@@ -312,7 +345,7 @@ export default function App() {
                 Personality Match Analysis
               </h3>
               <div className="space-y-4">
-                {result.probabilities.map(([type, prob], idx) => (
+                {result.probabilities.slice(0, 5).map(([type, prob], idx) => (
                   <div key={type} className="flex items-center gap-4 animate-countUp bg-gray-800/50 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm" style={{animationDelay: `${idx * 0.1}s`}}>
                     <div className="w-12 text-sm font-black text-yellow-400">#{idx + 1}</div>
                     <div className="flex-1">
@@ -335,6 +368,7 @@ export default function App() {
                 onClick={() => {
                   setResult(null);
                   setStep(0);
+                  setError('');
                   setFormData({
                     age: '',
                     gender: '',
@@ -382,6 +416,12 @@ export default function App() {
         </div>
 
         <div className="bg-gray-900 rounded-3xl shadow-2xl p-10 animate-slideUp border-2 border-gray-800 backdrop-blur-xl">
+          {error && (
+            <div className="mb-6 p-4 bg-red-500/20 border-2 border-red-500 rounded-xl text-red-400 text-center font-semibold animate-fadeIn">
+              {error}
+            </div>
+          )}
+
           <div className="mb-10">
             <div className="flex justify-between mb-4">
               {steps.map((s, idx) => (
@@ -453,7 +493,7 @@ export default function App() {
         </p>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fadeIn {
           from { opacity: 0; }
           to { opacity: 1; }
