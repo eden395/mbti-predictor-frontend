@@ -190,7 +190,7 @@ export default function App() {
       }
     } catch (error) {
       console.error('Error:', error);
-      setError(`Failed to connect to server. Please check if the backend is running. Error: ${error.message}`);
+      setError(`Failed to connect to server. Please try refreshing your page. Error: ${error.message}`);
     }
     
     setLoading(false);
@@ -279,7 +279,7 @@ export default function App() {
     }
     
     const labels = {
-      introversion: ['Extroverted', 'Introverted'],
+      introversion: ['Introverted', 'Extroverted'],
       sensing: ['Intuitive', 'Sensing'],
       thinking: ['Feeling', 'Thinking'],
       judging: ['Perceiving', 'Judging']
