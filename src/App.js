@@ -237,7 +237,6 @@ export default function App() {
             <option value="" className="bg-gray-800">Select gender</option>
             <option value="Male" className="bg-gray-800">Male</option>
             <option value="Female" className="bg-gray-800">Female</option>
-            <option value="Other" className="bg-gray-800">Other</option>
           </select>
         </div>
       );
@@ -252,7 +251,7 @@ export default function App() {
             onChange={(e) => setFormData({...formData, [field]: e.target.value})}
             className="w-full px-5 py-4 rounded-xl bg-gray-800 border-2 border-gray-700 text-white focus:border-yellow-500 focus:outline-none transition-colors"
           >
-            <option value="0" className="bg-gray-800">High School</option>
+            <option value="0" className="bg-gray-800">High School or Below</option>
             <option value="1" className="bg-gray-800">Bachelor's or Higher</option>
           </select>
         </div>
@@ -412,7 +411,7 @@ export default function App() {
           <h1 className="text-6xl font-black bg-gradient-to-r from-yellow-400 via-amber-400 to-yellow-500 bg-clip-text text-transparent mb-3 tracking-tight">
             MBTI PREDICTOR
           </h1>
-          <p className="text-gray-400 text-lg font-medium tracking-wide">Neural Analysis of Personality Patterns</p>
+          <p className="text-gray-400 text-lg font-medium tracking-wide">Find out your personality type!</p>
         </div>
 
         <div className="bg-gray-900 rounded-3xl shadow-2xl p-10 animate-slideUp border-2 border-gray-800 backdrop-blur-xl">
@@ -478,7 +477,7 @@ export default function App() {
                 {loading ? (
                   <span className="flex items-center justify-center gap-3">
                     <div className="w-5 h-5 border-3 border-gray-900 border-t-transparent rounded-full animate-spin" />
-                    Analyzing Neural Patterns...
+                    Analyzing Patterns...
                   </span>
                 ) : (
                   'Generate Analysis'
@@ -489,7 +488,7 @@ export default function App() {
         </div>
 
         <p className="text-center text-gray-600 text-sm mt-8 uppercase tracking-widest font-bold">
-          Random Forest ML • Real-time Analysis
+          Myers-Briggs Type Indicator
         </p>
       </div>
 
